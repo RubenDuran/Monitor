@@ -1,4 +1,5 @@
-version: "3.2"
+version: "2"
+#version: "3.2"
 volumes:
         prometheus_data: {}
         grafana_data: {}
@@ -38,7 +39,4 @@ services:
         - ./grafana/provisioning/:/etc/grafana/provisioning/
       env_file:
         - ./grafana/config.monitoring
-      # networks:
-      #   - back-tier
-      #   - front-tier
       restart: always
