@@ -1,7 +1,8 @@
 scrape_configs:
-    - job_name: cadvisor
-      scrape_interval: 5s
-      static_configs:
-      - targets:
-        - http://monitor.apps-bi-dev.insight.com
-        
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+  - job_name: cadvisor
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["localhost:8082"]
