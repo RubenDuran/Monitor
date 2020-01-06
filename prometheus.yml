@@ -2,6 +2,6 @@ scrape_configs:
     - job_name: cadvisor
       scrape_interval: 5s
       static_configs:
-      - targets: ['localhost:8082']
-        # - cadvisor:8082
+      - targets:
+        - http://monitor.apps-bi-dev.insight.com
         
