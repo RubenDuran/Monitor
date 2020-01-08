@@ -14,7 +14,7 @@ groups:
 
   # service availability alert
   - alert: worker10_down
-    expr: count(rate(container_last_seen{job="cadvisor", name="bi-airflow_worker_10"}[1m])) != 1
+    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_worker_10"}) == 1
     labels:
       service: Platform
       severity: major
