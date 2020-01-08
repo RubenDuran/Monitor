@@ -1,13 +1,23 @@
-route:
-  group_by: [Alertname]
-  receiver: email-me
+global:
+  smtp_smarthost: mailna.insight.com:25
+  smtp_from: pm_analytics@insight.com
+  smtp_require_tls: false
 
+route:
+  group_by: ['service']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 10m
+  receiver: default.receiver
+  routes:
+  - match:
+      service: Platform
+    # receiver: Platform.receiver
+    # continue: true
 receivers:
-- name: email-me
+- name: default.receiver
   email_configs:
-  - to: rduran@insight.com
-    from: pm_analytics@insight.com
-    smarthost: mailna.insight.com:25
-    auth_username: "pm_analytics@insight.com"
-    auth_identity: "pm_analytics@insight.com"
-    auth_password: "**********************"
+    - to: rduran@insight.com
+- name: example.receiver
+  email_configs:
+    - to: ruben.duran@insight.com
