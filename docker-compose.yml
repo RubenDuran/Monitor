@@ -15,8 +15,6 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     depends_on:
       - cadvisor
-      - node-exporter
-      - alertmanager
 
   cadvisor:
     image: google/cadvisor:latest
