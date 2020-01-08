@@ -58,15 +58,13 @@ services:
       # - samplenet
       restart: always
 
-  # alertmanager:
-  #     image: prom/alertmanager
-  #     ports:
-  #     - '9093:9093'
-  #     volumes:
-  #     - './alertmanager/:/etc/alertmanager/'
-  #     restart: always
-  #     command:
-  #     - '--config.file=/etc/alertmanager/config.yml'
-  #     - '--storage.path=/alertmanager'
-  #     # networks:
-  #     # - samplenet
+  alertmanager:
+      image: prom/alertmanager
+      ports:
+      - '9093:9093'
+      volumes:
+      - './alertmanager/:/etc/alertmanager/'
+      restart: always
+      command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
