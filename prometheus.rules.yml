@@ -1,7 +1,7 @@
 groups:
 - name: ./rules.conf
   rules:
-  # service availability alert
+
   - alert: service_down
     expr: up == 0
     labels:
@@ -12,7 +12,6 @@ groups:
       description: Service {{ $labels.instance }} is unavailable.
       value: DOWN ({{ $value }})
 
-  # service availability alert
   - alert: worker10_down
     expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_worker_10"}) == 1
     labels:
@@ -21,3 +20,39 @@ groups:
     annotations:
       description: Service bi-airflow_worker_10 is unavailable.
       value: DOWN (bi-airflow_worker_10)
+
+  - alert: bi-airflow_scheduler_1
+    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_scheduler_1"}) == 1
+    labels:
+      service: Platform
+      severity: major
+    annotations:
+      description: Service bi-airflow_scheduler_1 is unavailable.
+      value: DOWN (bi-airflow_scheduler_1)
+
+  - alert: bi-airflow_postgres_1
+    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_postgres_1"}) == 1
+    labels:
+      service: Platform
+      severity: major
+    annotations:
+      description: Service bi-airflow_postgres_1 is unavailable.
+      value: DOWN (bi-airflow_postgres_1)
+
+  - alert: bi-airflow_redis_1
+    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_redis_1"}) == 1
+    labels:
+      service: Platform
+      severity: major
+    annotations:
+      description: Service bi-airflow_redis_1 is unavailable.
+      value: DOWN (bi-airflow_redis_1)
+
+  - alert: bi-airflow_webserver_1
+    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_webserver_1"}) == 1
+    labels:
+      service: Platform
+      severity: major
+    annotations:
+      description: Service bi-airflow_webserver_1 is unavailable.
+      value: DOWN (bi-airflow_webserver_1)
