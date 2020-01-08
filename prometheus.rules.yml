@@ -18,39 +18,13 @@ groups:
     annotations:
       description: Service {{ $labels.instance }} is unavailable.
       value: DOWN ({{ $value }})
-      runbook: http://wiki.alerta.io/RunBook/{app}/Event/{alertname}
 
-  # - alert: service_up
-  #   expr: up == 1
-  #   labels:
-  #     service: Platform
-  #     severity: normal
-  #     correlate: service_up,service_down
-  #   annotations:
-  #     description: Service {{ $labels.instance }} is available.
-  #     value: UP ({{ $value }})
-
-  # system load alert
-  - alert: high_load
-    expr: node_load1 > 0.6
-    annotations:
-      description: '{{ $labels.instance }} of job {{ $labels.job }} is under high load.'
-      summary: Instance {{ $labels.instance }} under high load
-      value: '{{ $value }}'
-
-  # disk space alert (with resource=<instance>:<mountpoint> event=disk_space
-  - alert: disk_space
-    expr: (node_filesystem_size_bytes - node_filesystem_free_bytes) * 100 / node_filesystem_size_bytes > 5
+  # service availability alert
+  - alert: worker10_down
+    expr: count(rate(container_last_seen{job="cadvisor", name="bi-airflow_worker_10"}[1m])) != 1
     labels:
-      instance: '{{ $labels.instance }}:{{ $labels.mountpoint }}'
+      service: Platform
+      severity: major
     annotations:
-      value: '{{ humanize $value }}%'
-
-  # disk space alert (with resource=<instance> event=disk_util:<mountpoint>
-  - alert: disk_util
-    expr: (node_filesystem_size_bytes - node_filesystem_free_bytes) * 100 / node_filesystem_size_bytes > 5
-    labels:
-      instance: '{{ $labels.instance }}'
-      event: '{alertname}:{{ $labels.mountpoint }}'  # python templating rendered by Alerta
-    annotations:
-      value: '{{ humanize $value }}%'
+      description: Service bi-airflow_worker_10 is unavailable.
+      value: DOWN (bi-airflow_worker_10)
