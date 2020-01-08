@@ -1,4 +1,3 @@
-  
 route:
   group_by: [Alertname]
   receiver: email-me
