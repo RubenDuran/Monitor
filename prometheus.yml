@@ -11,10 +11,10 @@ scrape_configs:
     static_configs:
     - targets: ["172.25.10.223:9100"]
 
-# alerting:
-#   alertmanagers:
-#   - static_configs:
-#   - targets: ["172.25.10.223:9093"]
+alerting:
+  alertmanagers:
+  - static_configs:
+  - targets: ["172.25.10.223:9093"]
   
-# rule_files:
-# - 'alert.rules'
+rule_files:
+  - 'prometheus.rules.yml'
