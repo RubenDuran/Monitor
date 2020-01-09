@@ -19,7 +19,7 @@ receivers:
   email_configs:
     - to: 'rduran@insight.com'
     - headers: 
-      - Subject: 100 Monitor Issue
+      - Subject: '100 Monitor Issue'
 - name: example.receiver
   email_configs:
     - to: ruben.duran@insight.com
