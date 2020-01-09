@@ -17,9 +17,9 @@ route:
 receivers:
 - name: default.receiver
   email_configs:
-    - to: rduran@insight.com
-    - headers:
-      subject: '100 Monitor Issue'
+    - to: 'rduran@insight.com'
+    - headers: 
+      'subject' : '100 Monitor Issue'
 - name: example.receiver
   email_configs:
     - to: ruben.duran@insight.com
