@@ -18,7 +18,8 @@ receivers:
 - name: default.receiver
   email_configs:
     - to: rduran@insight.com
-    - subject: '100 Monitor Issue'
+      headers:
+        subject: "105 You have {{ .Alerts.Firing | len }} firing alerts"
 - name: example.receiver
   email_configs:
     - to: ruben.duran@insight.com
