@@ -17,9 +17,9 @@ route:
 receivers:
 - name: default.receiver
   email_configs:
-    - to: rduran@insight.com
+    - to: rduran@insight.com,Alejandro.SanchezArocha@insight.com
       headers:
-        subject: "105 You have {{ .Alerts.Firing | len }} firing alerts"
-- name: example.receiver
-  email_configs:
-    - to: ruben.duran@insight.com
+        subject: "100 You have {{ .Alerts.Firing | len }} firing alerts"
+# - name: example.receiver
+#   email_configs:
+#     - to: ruben.duran@insight.com
