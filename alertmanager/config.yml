@@ -19,7 +19,7 @@ receivers:
   email_configs:
     - to: rduran@insight.com
       headers:
-        subject: "105 -Container Down Alert! Service {{ .Alerts.Firing.firing }} is unavailable."
+        subject: "105 -Container Down Alert! Service {{ .Alerts.Firing }} is unavailable."
 # - name: example.receiver
 #   email_configs:
 #     - to: rduran@insight.com,svc_BIEmailBot@insight.com
