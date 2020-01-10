@@ -17,9 +17,9 @@ route:
 receivers:
 - name: default.receiver
   email_configs:
-    - to: rduran@insight.com,svc_BIEmailBot@insight.com
+    - to: rduran@insight.com
       headers:
         subject: "105 -Container Down Alert! Service {{ .Alerts.Firing.alertname }} is unavailable."
 # - name: example.receiver
 #   email_configs:
-#     - to: ruben.duran@insight.com
+#     - to: rduran@insight.com,svc_BIEmailBot@insight.com
