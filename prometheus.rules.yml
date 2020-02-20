@@ -9,50 +9,23 @@ groups:
       severity: major
       correlate: service_up,service_down
     annotations:
-      description: Service {{ $labels.instance }} is unavailable.
+      description: Service {{ $labels.instance }} in PROD is unavailable.
       value: DOWN ({{ $value }})
 
-  - alert: worker10_down
-    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_worker_10"}) == 1
+  - alert: AzureETEndpoint
+    expr: absent(container_last_seen{job="cadvisor", name="AzureETEndpoint"}) == 1
     labels:
       service: Platform
       severity: major
     annotations:
-      description: Service bi-airflow_worker_10 is unavailable.
-      value: DOWN (bi-airflow_worker_10)
+      description: Service AzureETEndpoint is unavailable in PROD.
+      value: DOWN (AzureETEndpoint)
 
-  - alert: bi-airflow_scheduler_1
-    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_scheduler_1"}) == 1
+  - alert: tokenbi
+    expr: absent(container_last_seen{job="cadvisor", name="tokenbi"}) == 1
     labels:
       service: Platform
       severity: major
     annotations:
-      description: Service bi-airflow_scheduler_1 is unavailable.
-      value: DOWN (bi-airflow_scheduler_1)
-
-  - alert: bi-airflow_postgres_1
-    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_postgres_1"}) == 1
-    labels:
-      service: Platform
-      severity: major
-    annotations:
-      description: Service bi-airflow_postgres_1 is unavailable.
-      value: DOWN (bi-airflow_postgres_1)
-
-  - alert: bi-airflow_redis_1
-    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_redis_1"}) == 1
-    labels:
-      service: Platform
-      severity: major
-    annotations:
-      description: Service bi-airflow_redis_1 is unavailable.
-      value: DOWN (bi-airflow_redis_1)
-
-  - alert: bi-airflow_webserver_1
-    expr: absent(container_last_seen{job="cadvisor", name="bi-airflow_webserver_1"}) == 1
-    labels:
-      service: Platform
-      severity: major
-    annotations:
-      description: Service bi-airflow_webserver_1 is unavailable.
-      value: DOWN (bi-airflow_webserver_1)
+      description: Service bi-airflow_scheduler_1 is unavailable in PROD.
+      value: DOWN (tokenbi)
