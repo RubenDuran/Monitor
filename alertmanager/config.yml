@@ -1,6 +1,6 @@
 global:
   smtp_smarthost: mailna.insight.com:25
-  smtp_from: container_monitor@insight.com
+  smtp_from: prod_container_monitor@insight.com
   smtp_require_tls: false
 
 route:
