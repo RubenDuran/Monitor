@@ -5,7 +5,7 @@ global:
   # scrape_timeout is set to the global default (10s).
   external_labels:
     monitor: codelab
-    environment: Dev
+    environment: Airflow
     service: Prometheus
     region: USA
     dc: us-west-1
