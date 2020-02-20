@@ -5,7 +5,7 @@ global:
   # scrape_timeout is set to the global default (10s).
   external_labels:
     monitor: codelab
-    environment: Dev
+    environment: QA
     service: Prometheus
     region: USA
     dc: us-west-1
@@ -13,7 +13,7 @@ global:
 alerting:
   alertmanagers:
   - static_configs:
-    - targets: ["172.25.10.223:9093"]
+    - targets: ["172.25.10.225:9093"]
 
 rule_files:
   - "prometheus.rules.yml"
@@ -25,8 +25,8 @@ scrape_configs:
   - job_name: "cadvisor"
     scrape_interval: 5s
     static_configs:
-      - targets: ["172.25.10.223:8087"]
+      - targets: ["172.25.10.225:8087"]
   - job_name: "node-exporter"
     scrape_interval: 5s
     static_configs:
-    - targets: ["172.25.10.223:9100"]
+    - targets: ["172.25.10.225:9100"]
