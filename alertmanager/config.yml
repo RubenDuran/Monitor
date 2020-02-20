@@ -1,6 +1,6 @@
 global:
   smtp_smarthost: mailna.insight.com:25
-  smtp_from: pm_analytics@insight.com
+  smtp_from: qa_docker_monitor@insight.com
   smtp_require_tls: false
 
 route:
@@ -17,9 +17,9 @@ route:
 receivers:
 - name: default.receiver
   email_configs:
-    - to: rduran@insight.com,svc_BIEmailBot@insight.com
+    - to: rduran@insight.com,svc_BIEmailBot@insight.com,pm_analytics@insight.com
       headers:
-        subject: "105 -Container Down Alert! Service {{ .Alerts.Firing }} is unavailable."
+        subject: "105 -Container Down Alert! Service {{ .Alerts.Firing }} is unavailable in QA."
 # - name: example.receiver
 #   email_configs:
 #     - to: rduran@insight.com,svc_BIEmailBot@insight.com  .Annotations.description

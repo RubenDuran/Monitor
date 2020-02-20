@@ -9,7 +9,7 @@ groups:
       severity: major
       correlate: service_up,service_down
     annotations:
-      description: Service {{ $labels.instance }} is unavailable.
+      description: Service {{ $labels.instance }} is unavailable in QA.
       value: DOWN ({{ $value }})
 
   - alert: worker10_down
@@ -18,7 +18,7 @@ groups:
       service: Platform
       severity: major
     annotations:
-      description: Service bi-airflow_worker_10 is unavailable.
+      description: Service bi-airflow_worker_10 is unavailable in QA.
       value: DOWN (bi-airflow_worker_10)
 
   - alert: bi-airflow_scheduler_1
@@ -27,7 +27,7 @@ groups:
       service: Platform
       severity: major
     annotations:
-      description: Service bi-airflow_scheduler_1 is unavailable.
+      description: Service bi-airflow_scheduler_1 is unavailable in QA.
       value: DOWN (bi-airflow_scheduler_1)
 
   - alert: bi-airflow_postgres_1
@@ -36,7 +36,7 @@ groups:
       service: Platform
       severity: major
     annotations:
-      description: Service bi-airflow_postgres_1 is unavailable.
+      description: Service bi-airflow_postgres_1 is unavailable in QA.
       value: DOWN (bi-airflow_postgres_1)
 
   - alert: bi-airflow_redis_1
@@ -45,7 +45,7 @@ groups:
       service: Platform
       severity: major
     annotations:
-      description: Service bi-airflow_redis_1 is unavailable.
+      description: Service bi-airflow_redis_1 is unavailable in QA.
       value: DOWN (bi-airflow_redis_1)
 
   - alert: bi-airflow_webserver_1
@@ -54,5 +54,23 @@ groups:
       service: Platform
       severity: major
     annotations:
-      description: Service bi-airflow_webserver_1 is unavailable.
+      description: Service bi-airflow_webserver_1 is unavailable in QA.
       value: DOWN (bi-airflow_webserver_1)
+
+  - alert: AzureETEndpoint
+    expr: absent(container_last_seen{job="cadvisor", name="AzureETEndpoint"}) == 1
+    labels:
+      service: Platform
+      severity: major
+    annotations:
+      description: Service AzureETEndpoint is unavailable in QA.
+      value: DOWN (AzureETEndpoint)
+
+  - alert: tokenbi
+    expr: absent(container_last_seen{job="cadvisor", name="tokenbi"}) == 1
+    labels:
+      service: Platform
+      severity: major
+    annotations:
+      description: Service tokenbi is unavailable in QA.
+      value: DOWN (tokenbi)
